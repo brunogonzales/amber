@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import missingPreview from "../components/missing-preview.vue";
-import tabs from "../components/tabs.vue";
+import missingPreview from "@/components/missing-preview.vue";
+import tabs from "@/components/tabs.vue";
 export default {
   components: { missingPreview, tabs },
   computed: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-4 pl-3">
+  <div class="flex space-x-4 pl-3 shadow-md">
     <p
       @click="$emit('tabClick', dictionary[tab])"
       v-for="tab in tabs"

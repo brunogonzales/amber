@@ -2,14 +2,41 @@
   <div>
     <div class="flex items-center p-3">
       <h1 class="font-bold text-lg">amber</h1>
-      <nav class="flex ml-auto space-x-4">
-        <nuxt-link to="/register">Perdí algo</nuxt-link>
-        <nuxt-link to="/login">Ingresar</nuxt-link>
+      <nav class="flex ml-auto space-x-4 items-center">
+        <nuxt-link to="/find">Perdí algo</nuxt-link>
+        <nuxt-link v-if="$auth.loggedIn" to="/account">{{
+          $auth.user.nickname
+        }}</nuxt-link>
+        <a v-else @click="$auth.login()">Ingresar</a>
+        <div class="w-8 h-8 items-center" @click="showSidebar = !showSidebar">
+          <img src="~assets/icons/menu.svg" />
+        </div>
+        <sidebar
+          @closeSidebar="showSidebar = !showSidebar"
+          :showSidebar="showSidebar"
+        />
       </nav>
     </div>
     <Nuxt />
   </div>
 </template>
+
+<script>
+import sidebar from "@/components/sidebar";
+export default {
+  components: {
+    sidebar,
+  },
+  data() {
+    return { showSidebar: false };
+  },
+  methods: {
+    toggleSidebar() {
+      this.showSidebar = !this.showSidebar;
+    },
+  },
+};
+</script>
 
 <style>
 html {

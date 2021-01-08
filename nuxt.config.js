@@ -27,9 +27,23 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss"
   ],
+  auth: {
+    redirect: {
+      login: "/",
+      callback: "/auth/signed-in"
+    },
+    strategies: {
+      local: false,
+      auth0: {
+        domain: "amberauth.us.auth0.com",
+        clientId: "z2aoBuqtSOg0YRWcjWOAncaY8cyP2gAQ",
+        audience: "amber.api"
+      }
+    }
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [],
+  modules: ["@nuxtjs/svg", "@nuxtjs/axios", "@nuxtjs/auth-next"],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
