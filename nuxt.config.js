@@ -42,8 +42,57 @@ export default {
     }
   },
 
+  components: true,
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          colors: {
+            green: "#43B02A",
+            blue: "#0070BA"
+          }
+        }
+      }
+    }
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.HASURA_ENDPOINT
+      }
+    }
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ["@nuxtjs/svg", "@nuxtjs/axios", "@nuxtjs/auth-next"],
+  modules: [
+    "@nuxtjs/svg",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
+    "nuxt-i18n",
+    "@nuxtjs/apollo"
+  ],
+
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "es",
+    vueI18n: {
+      fallbackLocale: "es",
+      messages: {
+        es: {
+          pet: "mascota",
+          pets: "mascotas",
+          people: "personas",
+          person: "persona",
+          thing: "objeto",
+          things: "objetos",
+          found: "encontrado",
+          lost_something: "Perdí algo",
+          login: "Ingresar"
+        }
+      }
+    }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}

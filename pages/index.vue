@@ -2,7 +2,6 @@
   <div>
     <tabs
       :tabs="categories"
-      :dictionary="dictionary"
       :activeTab="activeTab"
       @tabClick="(tab) => (activeTab = tab)"
     />
@@ -15,10 +14,7 @@
 </template>
 
 <script>
-import missingPreview from "@/components/missing-preview.vue";
-import tabs from "@/components/tabs.vue";
 export default {
-  components: { missingPreview, tabs },
   computed: {
     missingsToDisplay() {
       return this.missings[this.activeTab];
@@ -27,14 +23,7 @@ export default {
   data() {
     return {
       activeTab: "people",
-      categories: ["personas", "mascotas", "objetos", "encontrado"],
-      dictionary: {
-        personas: "people",
-        mascotas: "pets",
-        objetos: "things",
-        encontrado: "found",
-      },
-
+      categories: ["people", "pets", "things", "found"],
       missings: {
         people: [
           {

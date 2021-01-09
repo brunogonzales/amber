@@ -9,10 +9,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/auth-next": "^5.0.0-1610115973.9fdaa66",
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "date-fns": "^2.16.1",
+    "graphql-tag": "^2.11.0",
+    "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.17.0"
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.12",
