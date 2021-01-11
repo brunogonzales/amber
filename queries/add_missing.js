@@ -7,6 +7,7 @@ export const ADD_MISSING = gql`
     $description: String!
     $last_seen: String!
     $location: String!
+    $author: String!
   ) {
     insert_missings(
       objects: {
@@ -15,6 +16,7 @@ export const ADD_MISSING = gql`
         description: $description
         last_seen: $last_seen
         location: $location
+        author: $author
       }
     ) {
       affected_rows

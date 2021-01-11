@@ -3,13 +3,14 @@
     <p
       @click="$emit('tabClick', tab)"
       v-for="tab in tabs"
-      :key="tab"
+      :key="tab.label"
       :class="{
-        'hover:text-blue-400 cursor-pointer capitalize py-3 cursor-pointer': true,
-        'border-b-2 border-blue-400 text-blue-400': activeTab === tab,
+        'hover:text-blue-dark cursor-pointer capitalize py-3 cursor-pointer': true,
+        'border-b-2 border-blue-dark text-blue-dark':
+          activeTab.value === tab.value,
       }"
     >
-      {{ $t(tab) }}
+      {{ $t(tab.label) }}
     </p>
   </div>
 </template>
@@ -18,7 +19,7 @@
 export default {
   props: {
     tabs: Array,
-    activeTab: String,
+    activeTab: Object,
   },
 };
 </script>

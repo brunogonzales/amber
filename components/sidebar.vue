@@ -7,7 +7,10 @@
       <img src="icons/close.svg" />
     </div>
     <div class="flex flex-col space-y-4 items-end text-xl">
-      <a class="cursor-pointer" v-if="!$auth.loggedIn" @click="$auth.login()"
+      <a
+        class="cursor-pointer"
+        v-show="!$auth.loggedIn"
+        @click="() => $auth.login()"
         >Registro</a
       >
       <nuxt-link to="/found">Encontrados</nuxt-link>

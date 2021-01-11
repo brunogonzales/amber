@@ -7,7 +7,9 @@
         <nuxt-link v-if="$auth.loggedIn" to="/account">{{
           $auth.user.nickname
         }}</nuxt-link>
-        <a v-else @click="$auth.login()">{{ $t("login") }}</a>
+        <a v-else @click="$auth.login()" class="cursor-pointer">{{
+          $t("login")
+        }}</a>
         <div
           class="w-8 h-8 items-center cursor-pointer"
           @click="showSidebar = !showSidebar"

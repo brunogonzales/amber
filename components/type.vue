@@ -2,7 +2,7 @@
   <div
     :class="[
       'bg-gray-200 text-black flex flex-col space-y-4 p-5 items-center flex-1 rounded cursor-pointer',
-      typeIsSelected ? 'border-black border' : '',
+      typeIsSelected ? 'border-black border bg-white' : '',
     ]"
     @click="$emit('typeSelected', type)"
   >

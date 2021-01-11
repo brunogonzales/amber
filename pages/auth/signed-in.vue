@@ -1,7 +1,9 @@
 <template>
-  <div>Signin in</div>
+  <div>INGRESANDO...</div>
 </template>
 
 <script>
-export default {};
+export default {
+  layout: false,
+};
 </script>

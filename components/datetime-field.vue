@@ -5,7 +5,7 @@
       :name="name"
       class="border rounded h-10"
       type="datetime-local"
-      :value="value ? value : now"
+      :value="value"
       @input="$emit('input', $event.target.value)"
     />
   </div>
@@ -19,10 +19,8 @@ export default {
     name: String,
     value: String,
   },
-  computed: {
-    now() {
-      return format(new Date(), "yyyy-MM-dd'T'HH:mm");
-    },
+  mounted() {
+    this.$emit("input", format(new Date(), "yyyy-MM-dd'T'HH:mm"));
   },
 };
 </script>

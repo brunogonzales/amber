@@ -29,7 +29,7 @@ export default {
   ],
   auth: {
     redirect: {
-      login: "/",
+      login: "/auth/login",
       callback: "/auth/signed-in"
     },
     strategies: {
@@ -43,13 +43,18 @@ export default {
   },
 
   components: true,
+  // router: {
+  //   routeNameSplitter: "/"
+  // },
   tailwindcss: {
     config: {
       theme: {
         extend: {
           colors: {
             green: "#43B02A",
-            blue: "#0070BA"
+            blue: {
+              dark: "#0070BA"
+            }
           }
         }
       }
@@ -60,6 +65,12 @@ export default {
     clientConfigs: {
       default: {
         httpEndpoint: process.env.HASURA_ENDPOINT
+      }
+    },
+    defaultOptions: {
+      $query: {
+        fetchPolicy: "no-cache",
+        loadingKey: "loading"
       }
     }
   },
