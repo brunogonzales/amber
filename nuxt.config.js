@@ -25,7 +25,8 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    "@nuxtjs/tailwindcss"
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/date-fns"
   ],
   auth: {
     redirect: {
@@ -61,10 +62,15 @@ export default {
     }
   },
 
+  //PLUGINS
+  dateFns: {
+    defaultLocale: "es"
+  },
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.HASURA_ENDPOINT
+        httpEndpoint: process.env.HASURA_ENDPOINT,
+        wsEndpoint: process.env.HASURA_WSS_ENDPOINT
       }
     },
     defaultOptions: {
@@ -75,13 +81,18 @@ export default {
     }
   },
 
+  env: {
+    baseUrl: process.env.BASE_URL || "http://localhost:3000"
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     "@nuxtjs/svg",
     "@nuxtjs/axios",
     "@nuxtjs/auth-next",
     "nuxt-i18n",
-    "@nuxtjs/apollo"
+    "@nuxtjs/apollo",
+    "@nuxtjs/date-fns"
   ],
 
   i18n: {
@@ -99,7 +110,8 @@ export default {
           things: "objetos",
           found: "encontrado",
           lost_something: "Perdí algo",
-          login: "Ingresar"
+          login: "Ingresar",
+          missing: "desaparecidas"
         }
       }
     }

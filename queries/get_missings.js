@@ -5,10 +5,15 @@ export const GET_MISSINGS = gql`
     missings {
       id
       description
-      last_seen
+      timestamp
       location
       name
       type
+      last_seen
+      image_url
+      comments {
+        id
+      }
     }
   }
 `;

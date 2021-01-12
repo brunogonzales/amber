@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-4 pl-3 shadow-md">
+  <div class="flex w-full space-x-4 pl-3 shadow-md">
     <p
       @click="$emit('tabClick', tab)"
       v-for="tab in tabs"

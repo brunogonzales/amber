@@ -1,41 +1,24 @@
 <template>
-  <div class="flex flex-col space-y-3 px-3">
-    <h2 class="text-xl">Estoy buscando</h2>
-    <div class="flex space-x-4 justify-center">
-      <type
-        v-for="type in types"
-        :type="type"
-        :key="type"
-        @typeSelected="(typeSelected) => (missing.type = typeSelected)"
-        :typeIsSelected="missing.type === type"
-      />
+  <div class="flex space-y-2 flex-col">
+    <a @click="$router.back()" class="text-gray-600 pl-3">Regresar</a>
+    <div class="flex flex-col space-y-3 px-3">
+      <h2 class="text-xl">Estoy buscando</h2>
+      <div class="flex space-x-4 justify-center">
+        <type
+          v-for="type in types"
+          :type="type"
+          :key="type"
+          @typeSelected="(typeSelected) => (missing.type = typeSelected)"
+          :typeIsSelected="missing.type === type"
+        />
+      </div>
+      <div class="flex space-y-2 flex-col">
+        <p v-for="error in errors" :key="error" class="text-red-400">
+          {{ error }}
+        </p>
+      </div>
+      <missing-form :missing="missing" @submit="submit" />
     </div>
-    <div class="flex space-y-2 flex-col">
-      <p v-for="error in errors" :key="error" class="text-red-400">
-        {{ error }}
-      </p>
-    </div>
-    <form @submit.prevent="submit" class="flex flex-col space-y-2">
-      <text-field name="name" label="Nombre" v-model="missing.name" />
-      <text-field
-        name="description"
-        label="Descripcion"
-        v-model="missing.description"
-      />
-      <datetime-field
-        name="last_seen"
-        label="Vista por ultima vez"
-        v-model="missing.last_seen"
-      />
-      <text-field name="location" label="Lugar" v-model="missing.location" />
-      <file-field label="Foto" name="image" />
-      <button
-        class="bg-green py-6 text-white fixed bottom-0 left-0 w-full"
-        type="submit"
-      >
-        Publicar
-      </button>
-    </form>
   </div>
 </template>
 

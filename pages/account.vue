@@ -1,13 +1,14 @@
 <template>
   <div class="px-4">
+    <a @click="$router.back()" class="text-gray-600">Regresar</a>
     <div v-if="missings.length">
       <h2 class="text-bold text-black text-xl">Mis anuncios</h2>
-      <missing-preview
-        v-for="missing in missings"
-        :key="missing.id"
-        :missing="missing"
-      >
-      </missing-preview>
+      <div class="flex flex-wrap">
+        <div class="w-1/2" v-for="missing in missings" :key="missing.id">
+          <missing-preview :editable="true" :missing="missing">
+          </missing-preview>
+        </div>
+      </div>
     </div>
     <p v-else>CARGANDO...</p>
   </div>

@@ -1702,6 +1702,13 @@
     consola "^2.15.0"
     defu "^3.2.2"
 
+"@nuxtjs/date-fns@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/date-fns/-/date-fns-1.4.3.tgz#2f076295690fdac33330fd594f198fb2a7a779a1"
+  integrity sha512-9CZyyV43EAKBeAwQaaPD38tKgxY+Sixr9NIP00MtpnsPrCgir8C1ne8c7KbrCESLRGdKjs8A1I3RN92W31woAw==
+  dependencies:
+    date-fns "^2.16.1"
+
 "@nuxtjs/proxy@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/proxy/-/proxy-2.1.0.tgz#fa7715a11d237fa1273503c4e9e137dd1bf5575b"

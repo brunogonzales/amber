@@ -12,6 +12,7 @@ export const GET_MISSING_BY_ID = gql`
         id
         author
         message
+        timestamp
       }
     }
   }

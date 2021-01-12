@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute px-4 py-2 shadow-md top-0 bottom-96 right-0 bg-white flex flex-col h-full items-end"
+    class="absolute z-50 px-4 py-2 z-100 shadow-md top-0 bottom-96 right-0 bg-white flex flex-col h-full items-end"
     v-show="showSidebar"
   >
     <div @click="$emit('closeSidebar')" class="pb-4 cursor-pointer">

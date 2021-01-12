@@ -3,8 +3,8 @@ until 12
 [x] filter posts by name
 [x] redirect to page after posting a missing
 [x] render posted posts on account
-[] attach image_url to missing post
 [] filter with search
+[] attach image_url to missing post
 [] style missing preview
 
 [] use author_id pointing to users table (pending) to create comments
