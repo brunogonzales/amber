@@ -3,10 +3,9 @@
     <div class="flex items-center p-3">
       <nuxt-link to="/" class="font-bold text-lg">amber</nuxt-link>
       <nav class="flex ml-auto space-x-4 items-center">
+        <nuxt-link to="/emergency"> Emergencia </nuxt-link>
         <nuxt-link to="/find">{{ $t("lost_something") }}</nuxt-link>
-        <nuxt-link v-if="$auth.loggedIn" to="/account">{{
-          $auth.user.nickname
-        }}</nuxt-link>
+        <nuxt-link v-if="$auth.loggedIn" to="/account">Mi cuenta</nuxt-link>
         <a v-else @click="$auth.login()" class="cursor-pointer">{{
           $t("login")
         }}</a>

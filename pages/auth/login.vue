@@ -1,5 +1,5 @@
 <template>
-  <h1>LOADING>...</h1>
+  <h1 class="px-3 py-2">CARGANDO...</h1>
 </template>
 
 <script>

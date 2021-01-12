@@ -10,6 +10,14 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" }
     ],
+    script: [
+      {
+        src:
+          "https://maps.googleapis.com/maps/api/js?key=" +
+          process.env.GOOGLE_MAPS_API_KEY +
+          "&libraries=places"
+      }
+    ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
@@ -70,19 +78,19 @@ export default {
     clientConfigs: {
       default: {
         httpEndpoint: process.env.HASURA_ENDPOINT,
-        wsEndpoint: process.env.HASURA_WSS_ENDPOINT
+        wsEndpoint: process.env.HASURA_WS_ENDPOINT
       }
     },
     defaultOptions: {
       $query: {
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-and-network",
         loadingKey: "loading"
       }
     }
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || "http://localhost:3000"
+    baseUrl: process.env.BASE_URL || "http://localhost:3000/"
   },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -98,6 +106,7 @@ export default {
   i18n: {
     locales: ["es", "en"],
     defaultLocale: "es",
+    seo: false,
     vueI18n: {
       fallbackLocale: "es",
       messages: {

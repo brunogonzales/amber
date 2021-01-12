@@ -11,7 +11,8 @@
       label="Vista por ultima vez"
       v-model="missing.last_seen"
     />
-    <text-field name="location" label="Lugar" v-model="missing.location" />
+    <location-field name="location" label="Lugar" v-model="missing.location" />
+
     <file-field label="Foto" name="image" />
     <button
       class="bg-green py-6 text-white fixed bottom-0 left-0 w-full"

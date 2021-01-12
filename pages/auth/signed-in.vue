@@ -1,5 +1,5 @@
 <template>
-  <div>INGRESANDO...</div>
+  <div><h1 class="px-3 py-2">INGRESANDO...</h1></div>
 </template>
 
 <script>

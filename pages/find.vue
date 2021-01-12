@@ -54,7 +54,7 @@ export default {
     validateForm() {
       const { name, type, description, last_seen, location } = this.missing;
       if (!name || !type || !description || !last_seen || !location) {
-        this.errors.push("Por favor completa todos los campos");
+        this.errors = "Por favor completa todos los campos";
       }
       if (!this.errors.length) {
         return true;

@@ -55,12 +55,10 @@
 </template>
 
 <script>
-import {
-  GET_MISSING_BY_ID,
-  SUBSCRIBE_TO_MISSING,
-} from "@/queries/get_missing_by_id";
-import { ADD_COMMENT } from "@/queries/add_comment";
 import gql from "graphql-tag";
+import { GET_MISSING_BY_ID } from "@/queries/get_missing_by_id";
+import { ADD_COMMENT } from "@/queries/add_comment";
+import { SUBSCRIBE_TO_MISSING } from "@/queries/subscribe_to_missing";
 
 export default {
   middleware: "auth",
@@ -91,35 +89,19 @@ export default {
     missings: {
       query: GET_MISSING_BY_ID,
       subscribeToMore: {
-        document: gql`
-          subscription($id: Int!) {
-            missings(where: { id: { _eq: $id } }) {
-              id
-              name
-              description
-              location
-              image_url
-              comments {
-                id
-                author
-                message
-                timestamp
-              }
-            }
-          }
-        `,
-        // Variables passed to the subscription. Since we're using a function,
-        // they are reactive
-        variables() {
+        document: SUBSCRIBE_TO_MISSING,
+        updateQuery(previousResult, { subscriptionData }) {
           return {
-            id: this.$route.params.missing,
+            missings: [
+              ...(previousResult ? previousResult.missings : []),
+              ...subscriptionData.data.missings,
+            ],
           };
         },
-        // Mutate the previous result
-        updateQuery: (previousResult, { subscriptionData }) => {
-          console.log(subscriptionData.data.missings);
-          return { missings: [...subscriptionData.data.missings] };
-          // Here, return the new result from the previous with the new data
+        variables() {
+          return {
+            id: parseInt(this.$route.params.missing),
+          };
         },
       },
       variables() {

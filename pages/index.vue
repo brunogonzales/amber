@@ -4,16 +4,17 @@
     <div v-else class="flex flex-col space-y-3">
       <div class="flex">
         <tabs
-          :tabs="categories"
+          :tabs="tabs"
           :activeTab="activeTab"
           @tabClick="(tab) => (activeTab = tab)"
-        />
+        >
+        </tabs>
       </div>
       <div class="flex px-3 w-full space-x-3 align-center">
         <div class="w-full">
           <search
             v-model="search"
-            placeholder="🔍 Buscar por nombre, descripcion, o lugar"
+            placeholder="🔍  Buscar por nombre, descripcion, o lugar"
           />
         </div>
         <!-- <div
@@ -27,15 +28,17 @@
         {{ $t("missing") }}
         <span v-if="search">coinciden con "{{ search }}"</span>
       </h2>
-      <div class="flex flex-wrap">
-        <div
-          v-for="missing in missingsToDisplay"
-          :key="missing.id"
-          class="w-1/2"
-        >
-          <missing-preview :missing="missing" />
+      <client-only>
+        <div class="flex flex-wrap">
+          <div
+            v-for="missing in missingsToDisplay"
+            :key="missing.id"
+            class="w-1/2"
+          >
+            <missing-preview :missing="missing" />
+          </div>
         </div>
-      </div>
+      </client-only>
     </div>
   </div>
 </template>
@@ -60,7 +63,7 @@ export default {
       loading: 0,
       activeTab: { label: "people", value: "person" },
       search: "",
-      categories: [
+      tabs: [
         { label: "people", value: "person" },
         { label: "pets", value: "pet" },
         { label: "things", value: "thing" },

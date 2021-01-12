@@ -3,9 +3,10 @@ until 12
 [x] filter posts by name
 [x] redirect to page after posting a missing
 [x] render posted posts on account
-[] filter with search
+[x] filter with search
+[x] style missing preview
 [] attach image_url to missing post
-[] style missing preview
+[] CONNECT TO HASURA THROUGH WEBSOCKETS
 
 [] use author_id pointing to users table (pending) to create comments
 [] show page for each missing

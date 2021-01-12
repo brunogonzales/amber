@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-1">
+  <div class="flex flex-col">
     <label :for="name">{{ label }}</label>
     <input
       :name="name"
