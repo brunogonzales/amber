@@ -5,8 +5,9 @@
       :name="name"
       class="border rounded"
       type="file"
-      @change="$emit('change', $event)"
+      @change="fileSelected"
     />
+    <button @click="uploadFile"></button>
   </div>
 </template>
 
@@ -15,6 +16,17 @@ export default {
   props: {
     label: String,
     name: String,
+  },
+  data() {
+    return {
+      selectedFile: "",
+    };
+  },
+  methods: {
+    fileSelected(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    uploadFile(file) {},
   },
 };
 </script>

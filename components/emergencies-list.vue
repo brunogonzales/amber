@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col space-y-2 mt-2">
-    <h3 v-if="emergencies.length">{{ emergencies.length }} necesitan ayuda</h3>
+  <div class="flex flex-col space-y-2 pt-5">
+    <h3 v-if="emergencies.length" class="text-xl">
+      Estas personas necesitan tu ayuda
+    </h3>
     <div
       class="rounded bg-white border-black border py-2 px-3"
       v-for="emergency in emergencies"
@@ -20,6 +22,9 @@
           class="flex space-x-2"
           :account="account"
         />
+        <div>
+          <p>3 comentarios</p>
+        </div>
       </div>
     </div>
   </div>

@@ -5,8 +5,23 @@ until 12
 [x] render posted posts on account
 [x] filter with search
 [x] style missing preview
+[x] CONNECT TO HASURA THROUGH WEBSOCKETS
+[] firebase functions tutorial https://www.youtube.com/watch?v=udHm7I_OvJs&list=PL4cUxeGkcC9i_aLkr62adUTJi53y7OjOf
+[] firebase storage tutorial
+[] install nuxt/firebase -> \$fire.storage
 [] attach image_url to missing post
-[] CONNECT TO HASURA THROUGH WEBSOCKETS
+[] build firebase function to store image
+[] 0 obtain img blob
+[] upload blob safely an get url
+[] save form with url
+[] validate only image files
+[] fix form not sending location and style place input
+[] deploy to netlify and fill env vars
+[] footer 90px black
+[] share button \_missing and add bottom padding
+[] sorting data (comments \_missing)
+[] loading button (\_missing, lost_something + .then)
+[] edit anuncio
 
 [] use author_id pointing to users table (pending) to create comments
 [] show page for each missing
