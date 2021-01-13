@@ -10,21 +10,27 @@
     >
       <div>
         <div>
-          <p>{{ emergency.description }}</p>
+          <p>
+            {{ emergency.description }}
+            <span v-if="emergency.phone">telf: {{ emergency.phone }}</span>
+          </p>
+
           <p class="text-sm">
             hace
             {{ $dateFns.formatDistanceToNow(new Date(emergency.timestamp)) }}
           </p>
         </div>
-        <bank-account
-          v-for="account in emergency.emergency_accounts"
-          :key="account.id"
-          class="flex space-x-2"
-          :account="account"
-        />
-        <div>
-          <p>3 comentarios</p>
+        <div class="mt-1">
+          <bank-account
+            v-for="account in emergency.emergency_accounts"
+            :key="account.id"
+            class="flex space-x-2"
+            :account="account"
+          />
         </div>
+        <!-- <div>
+          <p>3 comentarios</p>
+        </div> -->
       </div>
     </div>
   </div>

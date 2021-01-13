@@ -6,7 +6,9 @@ until 12
 [x] filter with search
 [x] style missing preview
 [x] CONNECT TO HASURA THROUGH WEBSOCKETS
-[] firebase functions tutorial https://www.youtube.com/watch?v=udHm7I_OvJs&list=PL4cUxeGkcC9i_aLkr62adUTJi53y7OjOf
+[] upload image to firebase
+[] authenticate with firebase / save signups
+
 [] firebase storage tutorial
 [] install nuxt/firebase -> \$fire.storage
 [] attach image_url to missing post

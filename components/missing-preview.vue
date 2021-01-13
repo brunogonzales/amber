@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-2 rounded w-full px-3 py-2">
+  <div class="flex flex-col space-y-2 rounded px-3 py-2">
     <nuxt-link :to="'/' + missing.id">
       <div class="flex space-x-2 items-center">
         <p class="text-xl">

@@ -11,12 +11,13 @@
         </div>
         <p>{{ missings[0].location }}</p>
       </div>
-      <div
-        class="border border-black flex space-x-2 p-3 rounded justify-center"
+      <button
+        @click="sharePost"
+        class="border border-black flex space-x-2 p-3 rounded justify-center cursor-pointer"
       >
         <img src="icons/share.svg" alt="" />
         <p>Compartir</p>
-      </div>
+      </button>
       <h3>{{ missings[0].comments.length }} comentarios</h3>
       <div>
         <form @submit.prevent="postComment">
@@ -83,6 +84,22 @@ export default {
 
     formatToDate(comment) {
       return distanceInWordsToNow(new Date(comment.timestamp));
+    },
+    sharePost() {
+      console.log("hello");
+      const baseUrl = process.env.BASE_URL || "https://localhost:3000";
+      console.log("clicked");
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "Ayudame a encontrar a " + this.missings[0].name,
+            url: baseUrl,
+          })
+          .then(() => {})
+          .catch(console.error);
+      } else {
+        alert("URL copiada:" + baseUrl);
+      }
     },
   },
   apollo: {

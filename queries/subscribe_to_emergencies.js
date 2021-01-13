@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-export const FETCH_EMERGENCIES = gql`
-  query MyQuery {
+export const SUBSCRIBE_TO_EMERGENCIES = gql`
+  subscription emergencyAdded {
     emergencies(order_by: { timestamp: desc }) {
       timestamp
       id

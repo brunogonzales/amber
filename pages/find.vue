@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-y-2 flex-col">
+  <div class="flex space-y-2 flex-col pb-20">
     <a @click="$router.back()" class="text-gray-600 pl-3">Regresar</a>
     <div class="flex flex-col space-y-3 px-3">
       <h2 class="text-xl">Estoy buscando</h2>
@@ -12,12 +12,16 @@
           :typeIsSelected="missing.type === type"
         />
       </div>
-      <div class="flex space-y-2 flex-col">
-        <p v-for="error in errors" :key="error" class="text-red-400">
-          {{ error }}
+      <div v-if="errors.length" class="flex space-y-2 flex-col">
+        <p class="text-red-400">
+          {{ errors }}
         </p>
       </div>
-      <missing-form :missing="missing" @submit="submit" />
+      <missing-form
+        :missing="missing"
+        @submit="submit"
+        @fileUpload="(url) => setImageUrl(url)"
+      />
     </div>
   </div>
 </template>
@@ -34,6 +38,7 @@ export default {
         description: "",
         last_seen: "",
         location: "",
+        image_url: "",
       },
       types: ["person", "pet", "thing"],
       errors: [],
@@ -42,7 +47,7 @@ export default {
   watch: {
     missing: {
       handler(val) {
-        this.errors = [];
+        this.errors = "";
       },
       deep: true,
     },
@@ -52,8 +57,22 @@ export default {
       Object.assign(this.$data, this.$options.data.apply(this));
     },
     validateForm() {
-      const { name, type, description, last_seen, location } = this.missing;
-      if (!name || !type || !description || !last_seen || !location) {
+      const {
+        name,
+        type,
+        description,
+        last_seen,
+        location,
+        image_url,
+      } = this.missing;
+      if (
+        !name ||
+        !type ||
+        !description ||
+        !last_seen ||
+        !location ||
+        !image_url
+      ) {
         this.errors = "Por favor completa todos los campos";
       }
       if (!this.errors.length) {
@@ -65,19 +84,26 @@ export default {
         return;
       }
 
-      this.$apollo.mutate({
-        mutation: ADD_MISSING,
-        variables: {
-          type: this.missing.type,
-          name: this.missing.name,
-          description: this.missing.description,
-          last_seen: this.missing.last_seen,
-          location: this.missing.location,
-          author: this.$auth.user.email,
-        },
-      });
-      this.resetForm();
-      this.$router.push("/account");
+      this.$apollo
+        .mutate({
+          mutation: ADD_MISSING,
+          variables: {
+            type: this.missing.type,
+            name: this.missing.name,
+            description: this.missing.description,
+            last_seen: this.missing.last_seen,
+            location: this.missing.location,
+            author: this.$auth.user.email,
+            image_url: this.missing.image_url,
+          },
+        })
+        .then(() => {
+          this.resetForm();
+          this.$router.push("/account");
+        });
+    },
+    setImageUrl(url) {
+      this.missing.image_url = url;
     },
   },
 };

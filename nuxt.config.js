@@ -63,12 +63,18 @@ export default {
             green: "#43B02A",
             blue: {
               dark: "#0070BA"
+            },
+            primary: "cadetblue",
+            paper: "#9096354a",
+            ink: {
+              400: "#525252"
             }
           }
         }
       }
     }
   },
+  target: "static",
 
   //PLUGINS
   dateFns: {
@@ -95,13 +101,30 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    "@nuxtjs/svg",
     "@nuxtjs/axios",
     "@nuxtjs/auth-next",
     "nuxt-i18n",
     "@nuxtjs/apollo",
-    "@nuxtjs/date-fns"
+    "@nuxtjs/date-fns",
+    "@nuxtjs/firebase"
   ],
+
+  firebase: {
+    config: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAN,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.FIREBASE_APP_ID,
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID
+    },
+    services: {
+      auth: true,
+      storage: true
+      //All services https://firebase.nuxtjs.org/service-options/all-services
+    }
+  },
 
   i18n: {
     locales: ["es", "en"],

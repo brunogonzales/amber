@@ -5,9 +5,9 @@
         id="searchTextField"
         type="text"
         placeholder="Lugar"
-        @input="$emit('input', $event.target.value)"
-        :value="location"
         class="w-full px-3 py-2 border rounded h-8 pl-1"
+        :value="location"
+        @input="$emit('input', $event.target.value)"
       />
     </div>
   </div>
@@ -23,14 +23,18 @@ export default {
     };
   },
   mounted() {
-    new google.maps.places.Autocomplete(
-      document.getElementById("searchTextField"),
-      {
-        bounds: new google.maps.LatLngBounds(
-          new google.maps.LatLng(-12.046374, -77.042793)
-        ),
-      }
-    );
+    const input = document.getElementById("searchTextField");
+    const options = {
+      bounds: new google.maps.LatLngBounds(
+        new google.maps.LatLng(-12.046374, -77.042793)
+      ),
+      types: ["establishment"],
+    };
+
+    this.autocomplete = new google.maps.places.Autocomplete(input, options);
+    this.autocomplete.addListener("place_changed", () => {
+      this.$emit("input", this.autocomplete.getPlace().name);
+    });
   },
 
   methods: {
@@ -45,7 +49,8 @@ export default {
     },
 
     updateLocation(e) {
-      console.log(e);
+      console.log(this.autocomplete);
+      // this.$emit('input', )
     },
   },
 };
